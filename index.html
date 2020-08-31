@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калькулятор</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container pt-5">
+      <div class="d-flex justify-content-between">
+        <div class="type pb-2 pointer active">
+          <img src="./plotter.svg" class="w-100" />
+          <div class="text-center mt-2">Плотерная печать</div>
+        </div>
+        <div class="type pb-2 pointer">
+          <img src="./plotter.svg" class="w-100" />
+          <div class="text-center mt-2">Интерьерная печать</div>
+        </div>
+        <div class="type pb-2 pointer">
+          <img src="./plotter.svg" class="w-100" />
+          <div class="text-center mt-2">Табличка</div>
+        </div>
+        <div class="type pb-2 pointer">
+          <img src="./plotter.svg" class="w-100" />
+          <div class="text-center mt-2">Стенд</div>
+        </div>
+        <div class="type pb-2 pointer">
+          <img src="./plotter.svg" class="w-100" />
+          <div class="text-center mt-2">Объемные буквы</div>
+        </div>
+      </div>
+      <ul class="nav pt-4">
+        <li class="nav-item">
+          <a class="nav-link active pl-0" href="javascript:;">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:;">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:;">Link</a>
+        </li>
+      </ul>
+      <div class="d-flex align-items-end py-4">
+        <div class="form-group mb-0">
+          <label>Ширина</label>
+          <input type="text" class="form-control" />
+        </div>
+        <span class="mx-3 pb-2">Х</span>
+        <div class="form-group mb-0">
+          <label>Высота</label>
+          <input type="text" class="form-control" />
+        </div>
+        <span class="mx-3 pb-2">=</span>
+        <span class="pb-2">1500 рублей</span>
+      </div>
+    </div>
+  </body>
+</html>
