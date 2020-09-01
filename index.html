@@ -15,28 +15,28 @@
   <body>
     <div class="container pt-5">
       <div class="d-flex justify-content-between">
-        <div class="type pb-2 pointer active">
+        <div class="type pb-2 pointer active" data-type="plotter">
           <img src="./plotter.svg" class="w-100" />
           <div class="text-center mt-2">Плотерная печать</div>
         </div>
-        <div class="type pb-2 pointer">
+        <div class="type pb-2 pointer" data-type="interior">
           <img src="./plotter.svg" class="w-100" />
           <div class="text-center mt-2">Интерьерная печать</div>
         </div>
-        <div class="type pb-2 pointer">
+        <div class="type pb-2 pointer" data-type="table">
           <img src="./plotter.svg" class="w-100" />
           <div class="text-center mt-2">Табличка</div>
         </div>
-        <div class="type pb-2 pointer">
+        <div class="type pb-2 pointer" data-type="stand">
           <img src="./plotter.svg" class="w-100" />
           <div class="text-center mt-2">Стенд</div>
         </div>
-        <div class="type pb-2 pointer">
+        <div class="type pb-2 pointer" data-type="plotter">
           <img src="./plotter.svg" class="w-100" />
           <div class="text-center mt-2">Объемные буквы</div>
         </div>
       </div>
-      <ul class="nav pt-4">
+      <ul class="nav pt-4" id="categories">
         <li class="nav-item">
           <a class="nav-link active pl-0" href="javascript:;">Active</a>
         </li>
@@ -60,6 +60,28 @@
         <span class="mx-3 pb-2">=</span>
         <span class="pb-2">1500 рублей</span>
       </div>
+      <div id="fields"></div>
     </div>
+    <script src="./data.js"></script>
+    <script>
+      console.log(data);
+
+      let onTypeClick = ({ target }) => {
+        const typeNode = target.closest("[data-type]");
+        console.log(data[typeNode.dataset.type]);
+        clearTypes();
+        typeNode.classList.add("active");
+      };
+
+      document.querySelectorAll("[data-type]").forEach((node) => {
+        node.addEventListener("click", onTypeClick);
+      });
+
+      function clearTypes() {
+        document.querySelectorAll("[data-type]").forEach((node) => {
+          node.classList.remove("active");
+        });
+      }
+    </script>
   </body>
 </html>

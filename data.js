@@ -1,3 +1,94 @@
+const width = {
+  type: "number",
+  koef: 1,
+};
+const height = {
+  type: "number",
+  koef: 1,
+};
+const quality = {
+  type: "radio",
+  values: [
+    {
+      name: "720dpi",
+      koef: 1,
+    },
+    {
+      name: "1440dpi",
+      koef: 1.2,
+    },
+  ],
+};
+
+const flexy = {
+  type: "radio",
+  values: [
+    {
+      name: "Табличка в обрез",
+      koef: 1,
+    },
+    {
+      name: "Табличка с подгибкой",
+      koef: 1.2,
+    },
+  ],
+};
+const plotter = {
+  type: "radio",
+  values: [
+    {
+      name: "1 цвет",
+      measure: "m2",
+      price: 1500,
+    },
+    {
+      name: "2 цвета",
+      measure: "m2",
+      price: 3000,
+    },
+  ],
+};
+const lamination = {
+  type: "checkbox",
+  measure: "m2",
+  koef: 1.45,
+};
+const perimeterCut = {
+  type: "checkbox",
+  measure: "m",
+  price: 10,
+};
+const perimeterBonding = {
+  type: "checkbox",
+  measure: "m",
+  price: 50,
+};
+const eyelets = {
+  type: "number",
+  measure: "th",
+  price: 10,
+};
+
+const pvh = {
+  type: "number",
+  measure: "step",
+  price: 646,
+  thikness: [3, 5],
+};
+
+const composit = {
+  type: "number",
+  price: 5000,
+  thikness: [3],
+};
+
+const akrile = {
+  type: "number",
+  measure: "step",
+  price: 2500,
+  thikness: [2, 3, 4, 5, 6, 8, 10],
+};
+
 const data = {
   plotter: {
     name: "Плотерная резка",
@@ -127,93 +218,3 @@ const data = {
   },
 };
 
-const width = {
-  type: "number",
-  koef: 1,
-};
-const height = {
-  type: "number",
-  koef: 1,
-};
-const quality = {
-  type: "radio",
-  values: [
-    {
-      name: "720dpi",
-      koef: 1,
-    },
-    {
-      name: "1440dpi",
-      koef: 1.2,
-    },
-  ],
-};
-
-const flexy = {
-  type: "radio",
-  values: [
-    {
-      name: "Табличка в обрез",
-      koef: 1,
-    },
-    {
-      name: "Табличка с подгибкой",
-      koef: 1.2,
-    },
-  ],
-};
-const plotter = {
-  type: "radio",
-  values: [
-    {
-      name: "1 цвет",
-      measure: "m2",
-      price: 1500,
-    },
-    {
-      name: "2 цвета",
-      measure: "m2",
-      price: 3000,
-    },
-  ],
-};
-const lamination = {
-  type: "checkbox",
-  measure: "m2",
-  koef: 1.45,
-};
-const perimeterCut = {
-  type: "checkbox",
-  measure: "m",
-  price: 10,
-};
-const perimeterBonding = {
-  type: "checkbox",
-  measure: "m",
-  price: 50,
-};
-const eyelets = {
-  type: "number",
-  measure: "th",
-  price: 10,
-};
-
-const pvh = {
-  type: "number",
-  measure: "step",
-  price: 646,
-  thikness: [3, 5],
-};
-
-const composit = {
-  type: "number",
-  price: 5000,
-  thikness: [3],
-};
-
-const akrile = {
-  type: "number",
-  measure: "step",
-  price: 2500,
-  thikness: [2, 3, 4, 5, 6, 8, 10],
-};
