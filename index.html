@@ -36,7 +36,7 @@
           <div class="text-center mt-2">Объемные буквы</div>
         </div>
       </div>
-      <ul class="nav pt-4" id="categories">
+      <ul class="nav pt-4" id="categoriesMenu">
         <li class="nav-item">
           <a class="nav-link active pl-0" href="javascript:;">Active</a>
         </li>
@@ -65,21 +65,54 @@
     <script src="./data.js"></script>
     <script>
       console.log(data);
+      let currentType = null;
+      let currentCategory = null;
 
       let onTypeClick = ({ target }) => {
         const typeNode = target.closest("[data-type]");
-        console.log(data[typeNode.dataset.type]);
-        clearTypes();
+        const item = data[typeNode.dataset.type];
+        currentType = item;
+        clearActiveItems("[data-type]");
         typeNode.classList.add("active");
+        if (item.children) {
+          const categories = Object.keys(item.children).map((key) => {
+            return item.children[key].name;
+          });
+          setCategories(item.children);
+        }
+      };
+
+      let onCategoryClick = ({ target }) => {
+        const categoryNode = target.closest("[data-category]");
+        const item = currentType.children[categoryNode.dataset.category];
+        currentCategory = item;
+        console.log(item);
       };
 
       document.querySelectorAll("[data-type]").forEach((node) => {
         node.addEventListener("click", onTypeClick);
       });
 
-      function clearTypes() {
-        document.querySelectorAll("[data-type]").forEach((node) => {
+      function clearActiveItems(selector) {
+        document.querySelectorAll(selector).forEach((node) => {
           node.classList.remove("active");
+        });
+      }
+
+      function setCategories(categories) {
+        categoriesMenu.innerHTML = "";
+        Object.keys(categories).forEach((key, i) => {
+          const node = document.createElement("div");
+
+          node.innerHTML = `
+          <li class="nav-item" data-category="${key}">
+            <a class="nav-link pl-0 ${
+              i === 0 ? "active" : ""
+            }" href="javascript:;">${categories[key].name.toUpperCase()}</a>
+          </li>`;
+          const category = node.firstElementChild;
+          category.addEventListener("click", onCategoryClick);
+          categoriesMenu.append(category);
         });
       }
     </script>

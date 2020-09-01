@@ -70,6 +70,7 @@ const eyelets = {
 };
 
 const pvh = {
+  name: "ПВХ",
   type: "number",
   measure: "step",
   price: 646,
@@ -77,12 +78,14 @@ const pvh = {
 };
 
 const composit = {
+  name: "Композит",
   type: "number",
   price: 5000,
   thikness: [3],
 };
 
 const akrile = {
+  name: "Акрил",
   type: "number",
   measure: "step",
   price: 2500,
@@ -217,4 +220,3 @@ const data = {
     },
   },
 };
-
