@@ -36,35 +36,150 @@
           <div class="text-center mt-2">Объемные буквы</div>
         </div>
       </div>
-      <ul class="nav pt-4" id="categoriesMenu">
-        <li class="nav-item">
-          <a class="nav-link active pl-0" href="javascript:;">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:;">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:;">Link</a>
-        </li>
-      </ul>
-      <div class="d-flex align-items-end py-4">
-        <div class="form-group mb-0">
-          <label>Ширина</label>
-          <input type="text" class="form-control" />
+      <ul class="nav pt-4" id="categoriesMenu"></ul>
+      <form id="calculatorForm">
+        <div class="d-flex align-items-end py-4">
+          <div class="form-group mb-0 width-field">
+            <label>Ширина</label>
+            <input type="text" class="form-control" name="width" />
+          </div>
+          <div class="form-group mb-0 height-field">
+            <label>Высота</label>
+            <input type="text" class="form-control" name="height" />
+          </div>
         </div>
-        <span class="mx-3 pb-2">Х</span>
-        <div class="form-group mb-0">
-          <label>Высота</label>
-          <input type="text" class="form-control" />
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <label>Качество изображение</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="quality"
+                  id="720dpi"
+                  value="1"
+                  checked
+                />
+                <label class="form-check-label" for="720dpi">
+                  720dpi
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="quality"
+                  id="1440dpi"
+                  value="1.2"
+                />
+                <label class="form-check-label" for="1440dpi">
+                  1440dpi
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Вид таблицы</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexy"
+                  id="flexy1"
+                  value="1"
+                  checked
+                />
+                <label class="form-check-label" for="flexy1">
+                  Табличка в обрез
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexy"
+                  id="flexy2"
+                  value="1.2"
+                />
+                <label class="form-check-label" for="flexy2">
+                  Табличка с подгибкой
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="lamination" name="lamination" />
+              <label class="form-check-label" for="lamination">
+                Ламинация
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="perimeterCut" name="perimeterCut" />
+              <label class="form-check-label" for="perimeterCut">
+                Обрезка по периметру
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="perimeterBonding" name="perimeterBonding" />
+              <label class="form-check-label" for="perimeterBonding">
+                Проклейка по периметру
+              </label>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Плотерная резка</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="plotter"
+                  id="plotter1"
+                  value="1"
+                  checked
+                />
+                <label class="form-check-label" for="plotter1">
+                  1 цвет
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="plotter"
+                  id="plotter2"
+                  value="1.2"
+                />
+                <label class="form-check-label" for="plotter2">
+                  2 цвета
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Люверсы</label>
+              <input type="text" class="form-control" name="eyelets">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Толщина</label>
+              <select class="form-control" name="thikness">
+                <option value="1">1 мм</option>
+                <option value="2">2 мм</option>
+                <option value="3">3 мм</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <span class="mx-3 pb-2">=</span>
-        <span class="pb-2">1500 рублей</span>
-      </div>
-      <div id="fields"></div>
+      </form>
     </div>
     <script src="./data.js"></script>
     <script>
-      console.log(data);
       let currentType = null;
       let currentCategory = null;
 
@@ -79,6 +194,8 @@
             return item.children[key].name;
           });
           setCategories(item.children);
+        } else {
+          setCategories([]);
         }
       };
 
@@ -86,7 +203,8 @@
         const categoryNode = target.closest("[data-category]");
         const item = currentType.children[categoryNode.dataset.category];
         currentCategory = item;
-        console.log(item);
+        clearActiveItems("[data-category]");
+        categoryNode.classList.add("active");
       };
 
       document.querySelectorAll("[data-type]").forEach((node) => {
@@ -101,19 +219,23 @@
 
       function setCategories(categories) {
         categoriesMenu.innerHTML = "";
-        Object.keys(categories).forEach((key, i) => {
-          const node = document.createElement("div");
+        Object.keys(categories)
+          .filter((key) => key !== "fields")
+          .forEach((key, i) => {
+            const node = document.createElement("div");
 
-          node.innerHTML = `
-          <li class="nav-item" data-category="${key}">
-            <a class="nav-link pl-0 ${
-              i === 0 ? "active" : ""
-            }" href="javascript:;">${categories[key].name.toUpperCase()}</a>
+            node.innerHTML = `
+          <li class="nav-item ${
+            i === 0 ? "active" : ""
+          }" data-category="${key}">
+            <a class="nav-link" href="javascript:;">${categories[
+              key
+            ].name.toUpperCase()}</a>
           </li>`;
-          const category = node.firstElementChild;
-          category.addEventListener("click", onCategoryClick);
-          categoriesMenu.append(category);
-        });
+            const category = node.firstElementChild;
+            category.addEventListener("click", onCategoryClick);
+            categoriesMenu.append(category);
+          });
       }
     </script>
   </body>
