@@ -276,11 +276,14 @@ const data = {
   },
   letters: {
     name: "Объемные буквы",
+    isLetters: true,
     fields: {
       height: height,
       frame: frame,
       substrate: substrate,
       count: true,
+      "substrate-width": true,
+      "substrate-height": true,
     },
   },
 };
