@@ -15,7 +15,7 @@
   <body>
     <div class="container pt-5">
       <div class="d-flex justify-content-between">
-        <div class="type pb-2 pointer active" data-type="plotter">
+        <div class="type pb-2 pointer" data-type="plotter">
           <img src="./plotter.svg" class="w-100" />
           <div class="text-center mt-2">Плотерная печать</div>
         </div>
@@ -31,25 +31,50 @@
           <img src="./plotter.svg" class="w-100" />
           <div class="text-center mt-2">Стенд</div>
         </div>
-        <div class="type pb-2 pointer" data-type="plotter">
+        <div class="type pb-2 pointer" data-type="letters">
           <img src="./plotter.svg" class="w-100" />
           <div class="text-center mt-2">Объемные буквы</div>
         </div>
       </div>
       <ul class="nav pt-4" id="categoriesMenu"></ul>
       <form id="calculatorForm">
-        <div class="d-flex align-items-end py-4">
-          <div class="form-group mb-0 width-field">
-            <label>Ширина</label>
-            <input type="text" class="form-control" name="width" />
+        <div class="row py-3">
+          <div class="col-4 width">
+            <div class="form-group mb-0 mr-3">
+              <label>Ширина</label>
+              <input type="number" class="form-control" name="width" />
+            </div>
           </div>
-          <div class="form-group mb-0 height-field">
-            <label>Высота</label>
-            <input type="text" class="form-control" name="height" />
+          <div class="col-4 height">
+            <div class="form-group mb-0">
+              <label>Высота</label>
+              <input type="number" class="form-control" name="height" />
+            </div>
+          </div>
+
+          <div class="col-4 d-flex flex-column justify-content-end">
+            <div class="form-check frame">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="frame"
+                name="frame"
+              />
+              <label class="form-check-label" for="frame"> Рамка </label>
+            </div>
+            <div class="form-check substrate">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="substrate"
+                name="substrate"
+              />
+              <label class="form-check-label" for="substrate"> Подложка </label>
+            </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-4">
+          <div class="col-4 quality">
             <div class="form-group">
               <label>Качество изображение</label>
               <div class="form-check">
@@ -61,9 +86,7 @@
                   value="1"
                   checked
                 />
-                <label class="form-check-label" for="720dpi">
-                  720dpi
-                </label>
+                <label class="form-check-label" for="720dpi"> 720dpi </label>
               </div>
               <div class="form-check">
                 <input
@@ -73,13 +96,11 @@
                   id="1440dpi"
                   value="1.2"
                 />
-                <label class="form-check-label" for="1440dpi">
-                  1440dpi
-                </label>
+                <label class="form-check-label" for="1440dpi"> 1440dpi </label>
               </div>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-4 flexy">
             <div class="form-group">
               <label>Вид таблицы</label>
               <div class="form-check">
@@ -110,26 +131,41 @@
             </div>
           </div>
           <div class="col-4">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="lamination" name="lamination" />
+            <div class="form-check lamination">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="lamination"
+                name="lamination"
+              />
               <label class="form-check-label" for="lamination">
                 Ламинация
               </label>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="perimeterCut" name="perimeterCut" />
+            <div class="form-check perimeterCut">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="perimeterCut"
+                name="perimeterCut"
+              />
               <label class="form-check-label" for="perimeterCut">
                 Обрезка по периметру
               </label>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="perimeterBonding" name="perimeterBonding" />
+            <div class="form-check perimeterBonding">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="perimeterBonding"
+                name="perimeterBonding"
+              />
               <label class="form-check-label" for="perimeterBonding">
                 Проклейка по периметру
               </label>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-4 plotter">
             <div class="form-group">
               <label>Плотерная резка</label>
               <div class="form-check">
@@ -141,9 +177,7 @@
                   value="1"
                   checked
                 />
-                <label class="form-check-label" for="plotter1">
-                  1 цвет
-                </label>
+                <label class="form-check-label" for="plotter1"> 1 цвет </label>
               </div>
               <div class="form-check">
                 <input
@@ -153,27 +187,32 @@
                   id="plotter2"
                   value="1.2"
                 />
-                <label class="form-check-label" for="plotter2">
-                  2 цвета
-                </label>
+                <label class="form-check-label" for="plotter2"> 2 цвета </label>
               </div>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-4 eyelets">
             <div class="form-group">
               <label>Люверсы</label>
-              <input type="text" class="form-control" name="eyelets">
+              <input type="text" class="form-control" name="eyelets" />
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-4 thikness">
             <div class="form-group">
               <label>Толщина</label>
-              <select class="form-control" name="thikness">
-                <option value="1">1 мм</option>
-                <option value="2">2 мм</option>
-                <option value="3">3 мм</option>
-              </select>
+              <select class="form-control" name="thikness"></select>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group mr-3 count">
+              <label>Количество</label>
+              <input type="number" class="form-control" name="count" />
+            </div>
+            <button class="btn btn-primary" type="button" id="countBtn">
+              Рассчитать
+            </button>
           </div>
         </div>
       </form>
@@ -182,6 +221,26 @@
     <script>
       let currentType = null;
       let currentCategory = null;
+      const fieldNames = [
+        "width",
+        "height",
+        "quality",
+        "flexy",
+        "lamination",
+        "perimeterCut",
+        "perimeterBonding",
+        "plotter",
+        "eyelets",
+        "thikness",
+        "count",
+        "frame",
+        "substrate",
+      ];
+
+      const fieldNodes = {};
+      fieldNames.forEach((name) => {
+        fieldNodes[name] = document.querySelector(`.${name}`);
+      });
 
       let onTypeClick = ({ target }) => {
         const typeNode = target.closest("[data-type]");
@@ -196,6 +255,8 @@
           setCategories(item.children);
         } else {
           setCategories([]);
+          clearFields();
+          showFields(Object.keys(currentType.fields));
         }
       };
 
@@ -205,16 +266,70 @@
         currentCategory = item;
         clearActiveItems("[data-category]");
         categoryNode.classList.add("active");
+        clearFields();
+        showFields(Object.keys(currentCategory.fields));
       };
 
-      document.querySelectorAll("[data-type]").forEach((node) => {
+      let onCountButtonClick = () => {
+        const value = getRawValue(
+          Object.keys(
+            currentType.fields ? currentType.fields : currentCategory.fields
+          )
+        );
+
+        console.log(value);
+      };
+
+      countBtn.addEventListener("click", onCountButtonClick);
+
+      document.querySelectorAll("[data-type]").forEach((node, index) => {
         node.addEventListener("click", onTypeClick);
+        if (!index) {
+          node.click();
+        }
       });
 
       function clearActiveItems(selector) {
         document.querySelectorAll(selector).forEach((node) => {
           node.classList.remove("active");
         });
+      }
+
+      function clearFields() {
+        Object.keys(fieldNodes).forEach((key) => {
+          fieldNodes[key].classList.remove("d-block");
+          fieldNodes[key].classList.add("d-none");
+        });
+      }
+
+      function showFields(names) {
+        Object.keys(fieldNodes).forEach((key) => {
+          if (!!names.find((name) => name === key)) {
+            fieldNodes[key].classList.remove("d-none");
+            fieldNodes[key].classList.add("d-block");
+            if (key === "thikness") {
+              const select = fieldNodes[key].querySelector("select");
+              select.innerHTML = "";
+              currentCategory.fields.thikness.forEach((th) => {
+                const opt = document.createElement("option");
+                opt.value = th;
+                opt.textContent = `${th} мм`;
+                select.append(opt);
+              });
+            }
+          }
+        });
+      }
+
+      function getRawValue(fields) {
+        const value = {};
+        fields.forEach((field) => {
+          const elem = document.forms[0].elements[field];
+          if (elem) {
+            value[field] = elem.type === 'checkbox' ? elem.checked : elem.value;
+          }
+        });
+        return value;
       }
 
       function setCategories(categories) {
@@ -225,15 +340,16 @@
             const node = document.createElement("div");
 
             node.innerHTML = `
-          <li class="nav-item ${
-            i === 0 ? "active" : ""
-          }" data-category="${key}">
+          <li class="nav-item" data-category="${key}">
             <a class="nav-link" href="javascript:;">${categories[
               key
             ].name.toUpperCase()}</a>
           </li>`;
             const category = node.firstElementChild;
             category.addEventListener("click", onCategoryClick);
+            if (!i) {
+              category.click();
+            }
             categoriesMenu.append(category);
           });
       }

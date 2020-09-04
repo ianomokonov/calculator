@@ -6,6 +6,14 @@ const height = {
   type: "number",
   koef: 1,
 };
+const frame = {
+  type: "checkbox",
+  price: 300,
+};
+const substrate = {
+  type: "checkbox",
+  price: 3000,
+};
 const quality = {
   type: "radio",
   values: [
@@ -74,14 +82,44 @@ const pvh = {
   type: "number",
   measure: "step",
   price: 646,
-  thikness: [3, 5],
+
+  fields: {
+    height: {
+      ...height,
+      max: 600,
+    },
+    width: {
+      ...width,
+      max: 600,
+    },
+    quality: quality,
+    lamination: lamination,
+    plotter: plotter,
+    flexy: flexy,
+    thikness: [3, 5],
+  },
 };
 
 const composit = {
   name: "Композит",
   type: "number",
   price: 5000,
-  thikness: [3],
+
+  fields: {
+    height: {
+      ...height,
+      max: 600,
+    },
+    width: {
+      ...width,
+      max: 600,
+    },
+    quality: quality,
+    lamination: lamination,
+    plotter: plotter,
+    flexy: flexy,
+    thikness: [3],
+  },
 };
 
 const akrile = {
@@ -89,7 +127,22 @@ const akrile = {
   type: "number",
   measure: "step",
   price: 2500,
-  thikness: [2, 3, 4, 5, 6, 8, 10],
+
+  fields: {
+    height: {
+      ...height,
+      max: 600,
+    },
+    width: {
+      ...width,
+      max: 600,
+    },
+    quality: quality,
+    lamination: lamination,
+    plotter: plotter,
+    flexy: flexy,
+    thikness: [2, 3, 4, 5, 6, 8, 10],
+  },
 };
 
 const data = {
@@ -113,6 +166,7 @@ const data = {
           quality,
           lamination,
           perimeterCut,
+          count: true,
         },
       },
       bannerLaminated: {
@@ -125,6 +179,7 @@ const data = {
           perimeterCut,
           perimeterBonding,
           eyelets,
+          count: true,
         },
       },
       bannerCast: {
@@ -137,6 +192,7 @@ const data = {
           perimeterCut,
           perimeterBonding,
           eyelets,
+          count: true,
         },
       },
       posterPaper: {
@@ -147,6 +203,7 @@ const data = {
           height,
           quality,
           perimeterCut,
+          count: true,
         },
       },
       photoPaper: {
@@ -157,6 +214,7 @@ const data = {
           height,
           quality,
           perimeterCut,
+          count: true,
         },
       },
       Backlit: {
@@ -167,6 +225,7 @@ const data = {
           height,
           quality,
           perimeterCut,
+          count: true,
         },
       },
       perforatedFilm: {
@@ -177,6 +236,7 @@ const data = {
           height,
           quality,
           perimeterCut,
+          count: true,
         },
       },
     },
@@ -187,20 +247,6 @@ const data = {
       pvh: pvh,
       composit: composit,
       akrile: akrile,
-      fields: {
-        height: {
-          ...height,
-          max: 600,
-        },
-        width: {
-          ...width,
-          max: 600,
-        },
-        quality: quality,
-        lamination: lamination,
-        plotter: plotter,
-        flexy: flexy,
-      },
     },
   },
   stand: {
@@ -208,15 +254,33 @@ const data = {
     children: {
       pvh: pvh,
       composit: composit,
-      akrile: { ...akrile, thikness: [2, 3, 4, 5] },
-      fields: {
-        height: height,
-        width: width,
-        quality: quality,
-        lamination: lamination,
-        plotter: plotter,
-        flexy: flexy,
+      akrile: {
+        ...akrile,
+        fields: {
+          height: {
+            ...height,
+            max: 600,
+          },
+          width: {
+            ...width,
+            max: 600,
+          },
+          quality: quality,
+          lamination: lamination,
+          plotter: plotter,
+          flexy: flexy,
+          thikness: [2, 3, 4, 5],
+        },
       },
+    },
+  },
+  letters: {
+    name: "Объемные буквы",
+    fields: {
+      height: height,
+      frame: frame,
+      substrate: substrate,
+      count: true,
     },
   },
 };
